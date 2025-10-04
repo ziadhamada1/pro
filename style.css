@@ -1,0 +1,381 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  direction: rtl;
+}
+
+/* الهيدر */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  background: #0C2D57;
+  color: #FC6736;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  
+}
+
+/* السلايدر */
+.product-slider-section {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 90vh;
+  padding-top: 80px;
+}
+.product-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.product-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.product-slide.active { opacity: 1; z-index: 1; }
+.product-slide img { width: 100%; height: 100%; object-fit: cover; }
+.caption {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  opacity: 0;
+}
+.product-slide.active .caption {
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+@keyframes fadeInUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+
+/* الخريطة */
+#map { height: 70vh; margin-top: 50px; }
+.maap h2 { text-align: center; color: #0C2D57; }
+
+/* رفع الملفات */
+.upload-container { text-align: center; margin: 15px 0; }
+.upload-btn {
+  background-color: #3a86ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.upload-btn:hover { background-color: #2653b0; }
+
+/* فلتر النقاط */
+#filter { display:flex; justify-content:center; gap:15px; margin:15px 0; }
+
+/* الداشبورد */
+#dashboard { padding:15px; background:#f5f5f5; }
+canvas { max-width:500px; margin:20px auto; display:block; }
+
+/* جدول النقاط */
+#points-table { padding:15px; }
+#points-table table { width:100%; border-collapse: collapse; }
+#points-table th, #points-table td { border:1px solid #ddd; padding:8px; text-align:center; }
+#points-table th { background:#0C2D57; color:#fff; }
+
+
+
+/* تنسيقات القسم */
+.about-section {
+  position: relative;
+  padding: 80px 20px;
+  color: #fff;
+  text-align: center;
+  background: url('imgs/ChatGPT Image 4 أكتوبر 2025، 11_17_40 م.png') no-repeat center center fixed;
+  background-size: cover;
+  z-index: 1;
+}
+
+/* طبقة تغطية لتظليل الصورة */
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* شوية تغميق على الصورة */
+  z-index: -1;
+}
+
+/* العناوين */
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+/* الفقرات */
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* القائمة */
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-list li {
+  background: rgba(255,255,255,0.2);
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 1rem;
+  min-width: 220px;
+  text-align: left;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+}
+
+/* لو حبيت تخلي الصورة تظهر داخل div بدل الخلفية */
+.about-image-container {
+  display: none; /* نخفي div الصورة لأنه حالياً باكجراوند */
+}
+
+
+
+/* ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ */
+
+
+
+/* سلايدر الحياة البرية */
+.wildlife-slider-section {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 100vh;
+}
+.wildlife-slider-section  h2 {
+  text-align: center;
+  color: #007bff;
+  font-size: 26px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+
+.wildlife-slider {
+  position: relative;
+  width: 100%;
+  height: 90%;
+}
+
+.wildlife-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.wildlife-slide.active { 
+  opacity: 1; 
+  z-index: 1; 
+}
+
+.wildlife-slide img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.wildlife-slide .caption {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  opacity: 0;
+}
+
+.wildlife-slide.active .caption {
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp { 
+  from { transform: translateY(30px); opacity:0; } 
+  to { transform: translateY(0); opacity:1; } 
+}
+/* ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ */
+
+.visit-tips-section {
+  padding: 40px 20px;
+  background-color: #f0f9f9;
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 900px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.visit-tips-section:hover {
+  background: #e6f7f7;
+}
+
+.visit-tips-section h2 {
+  text-align: center;
+  color: #007bff;
+  font-size: 26px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.visit-tips-section .intro {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tips-list li {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.tips-list li:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  background: #e0f7f7;
+}
+
+.tip-icon {
+  font-size: 28px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.tips-list li:hover .tip-icon {
+  transform: rotate(-15deg) scale(1.2);
+}
+/* ظظظظظظظظظظظظظظظظظظظظظظ */
+.stats-section {
+  padding: 40px 20px;
+  background-color: #eef6f9;
+  border-radius: 12px;
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.stats-section h2 {
+  font-size: 26px;
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 20px 25px;
+  width: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+  font-size: 40px;
+}
+
+.stat-info h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.stat-info p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+}
+
+
+/* ظظظظظظظظظظظظظظظظظظظظظظظظظظ */
+#user-interactive h2 {
+  font-size: 24px;
+}
+
+#userMap {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+}
+
+#userChart {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+#userMap {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+}

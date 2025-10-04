@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مشروع البرلس - جيوماتكس</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- الهيدر -->
+  <header>
+    <div class="logo">
+      <h2>المجموعة العاشرة</h2>
+    </div>
+  </header>
+
+  <!-- السلايدر -->
+  <section class="product-slider-section">
+    <div class="product-slider" id="productSlider">
+      <div class="product-slide active">
+        <img src="imgs/WhatsApp Image 2025-10-02 at 11.30.29 PM.jpeg" alt="عضو الفريق 1">
+        <div class="caption">أحمد محمد</div>
+      </div>
+      <div class="product-slide">
+        <img src="imgs/WhatsApp Image 2025-10-02 at 11.30.29 PM (1).jpeg" alt="عضو الفريق 2">
+        <div class="caption">يوسف علي</div>
+      </div>
+      <div class="product-slide">
+        <img src="imgs/WhatsApp Image 2025-10-02 at 11.30.28 PM.jpeg" alt="عضو الفريق 3">
+        <div class="caption">أحمد ياسر</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- سكشن عن المنطقة -->
+  <section id="about" class="about-section">
+  <h2>🌿 عن منطقة البرلس</h2>
+  <p class="about-text">
+    بحيرة البرلس تقع شمال دلتا مصر وتعتبر من أكبر البحيرات المالحة في مصر. تتميز المنطقة بتنوع الأنشطة الاقتصادية مثل الزراعة، الصيد، والصناعة التقليدية. كما تُعد المنطقة موطنًا للعديد من الطيور والمخلوقات البحرية.
+  </p>
+  <p class="about-text">
+    تلعب بحيرة البرلس دورًا مهمًا في دعم المجتمع المحلي من خلال الموارد الطبيعية وفرص العمل في الزراعة والصيد، وتساهم أيضًا في السياحة البيئية للمنطقة.
+  </p>
+
+  <ul class="about-list">
+    <li>🌾 الزراعة: أراضي خصبة حول البحيرة للزراعة الموسمية والدائمة</li>
+    <li>🎣 الصيد: توفير مصدر غذاء ووظائف للصيادين المحليين</li>
+    <li>🏭 الصناعة: مصانع تقليدية ومشروعات صغيرة في الصناعات الحرفية</li>
+    <li>🏞️ السياحة: زيارة البحيرة للطبيعة والطيور المهاجرة</li>
+  </ul>
+
+  <div class="about-image-container">
+    <img src="imgs/ChatGPT Image 4 أكتوبر 2025، 11_17_40 م.png" alt="بحيرة البرلس">
+  </div>
+</section>
+
+
+  <!-- الخريطة -->
+  <section class="maap">
+    <h2>📍 دراسة منطقة البرلس</h2>
+
+    <div class="upload-container">
+      <label for="fileInput" class="upload-btn">📂 رفع ملف GeoJSON أو CSV</label>
+      <input type="file" id="fileInput" accept=".geojson,.json,.csv" hidden>
+    </div>
+
+    <div id="filter">
+      <label><input type="checkbox" value="زراعة" checked> زراعة</label>
+      <label><input type="checkbox" value="صناعة" checked> صناعة</label>
+      <label><input type="checkbox" value="سكنية" checked> سكنية</label>
+      <label><input type="checkbox" value="صيد" checked> صيد</label>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="dashboard">
+      <h3>📊 إحصائيات الأنشطة</h3>
+      <canvas id="typeChart"></canvas>
+    </div>
+  </section>
+
+  <!-- جدول النقاط -->
+  <section id="points-table">
+    <h2>📋 قائمة النقاط</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>النوع</th>
+          <th>خط العرض</th>
+          <th>خط الطول</th>
+          <th>ملاحظات</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+<!-- ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ -->
+<!-- سكشن الأنشطة حسب الشهر -->
+<!-- سكشن صور الطبيعة والحياة البرية -->
+
+  <!-- <h2 style="text-align:center; margin-bottom:20px;">🦆 الحياة البرية والطبيعة حول بحيرة البرلس</h2> -->
+
+
+  <section class="wildlife-slider-section">
+      <h2>🌿 المناطق الطبيعه ف البحيره والانشطة</h2>
+  <div class="wildlife-slider" id="wildlifeSlider">
+    <div class="wildlife-slide active">
+      <img src="imgs/بحيره_البرلس.jpg" alt="طبيعة 1">
+      <div class="caption">طيور البحيرة</div>
+    </div>
+    <div class="wildlife-slide">
+      <img src="imgs/البرلس.jpg" alt="طبيعة 2">
+      <div class="caption">الأسماك والمزارع</div>
+    </div>
+    <div class="wildlife-slide">
+      <img src="imgs/برلسس.jpg" alt="طبيعة 3">
+      <div class="caption">المناظر الطبيعية</div>
+    </div>
+  </div>
+</section>
+
+<!-- ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ -->
+
+<section id="visit-tips" class="visit-tips-section">
+  <h2>🌿 نصائح للزيارة والسياحة البيئية</h2>
+  <p class="intro">استمتع بالزيارة مع الحفاظ على البيئة واستكشاف مناطق البرلس بشكل مسؤول:</p>
+
+  <ul class="tips-list">
+    <li>
+      <span class="tip-icon">🗺️</span>
+      خطط مسارك مسبقًا لتغطية المناطق المهمة للطيور والأسماك.
+    </li>
+    <li>
+      <span class="tip-icon">🚶‍♂️</span>
+      استخدم مسارات المشي المخصصة لتجنب التأثير على النباتات والحياة البرية.
+    </li>
+    <li>
+      <span class="tip-icon">📸</span>
+      احمل كاميرا أو منظار لرصد الطيور دون إزعاجها.
+    </li>
+    <li>
+      <span class="tip-icon">🌊</span>
+      تجنب الصيد العشوائي واتبع القواعد البيئية المحلية.
+    </li>
+    <li>
+      <span class="tip-icon">♻️</span>
+      احرص على جمع مخلفاتك والحفاظ على نظافة المكان.
+    </li>
+    <li>
+      <span class="tip-icon">🌾</span>
+      تفاعل مع المجتمعات المحلية وتعرف على الزراعة التقليدية.
+    </li>
+  </ul>
+</section>
+
+ <!-- ظظظظظظظظظظظظظظظظظظظظظظظظظظظظ -->
+
+
+ <section id="general-stats" class="stats-section">
+  <h2>📊 إحصائيات عامة لمنطقة البرلس</h2>
+  <div class="stats-cards">
+    <div class="stat-card">
+      <div class="stat-icon">🌾</div>
+      <div class="stat-info">
+        <h3>إجمالي مساحة الزراعة</h3>
+        <p>1250 فدان</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏡</div>
+      <div class="stat-info">
+        <h3>عدد المزارع المحلية</h3>
+        <p>85 مزرعة</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎣</div>
+      <div class="stat-info">
+        <h3>كمية الصيد السنوية</h3>
+        <p>450 طن</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🌿</div>
+      <div class="stat-info">
+        <h3>عدد المشاريع البيئية</h3>
+        <p>12 مشروع</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ظظظظظظظظظظظظظظظظظظظظظظظ -->
+
+
+<!-- سكشن تفاعلي للمستخدم -->
+<!-- سكشن تفاعلي للمستخدم -->
+<section id="user-interactive" style="margin-top:40px; padding:20px; background:#f0f8ff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+  <h2 style="text-align:center; margin-bottom:20px; color:#007bff;">🗺️ جرب التحليل بنفسك</h2>
+  
+  <div style="text-align:center; margin-bottom:15px;">
+    <label for="userFile" style="cursor:pointer; background:#007bff; color:#fff; padding:10px 20px; border-radius:8px;">📂 رفع ملف CSV أو GeoJSON</label>
+    <input type="file" id="userFile" accept=".csv,.geojson,.json" hidden>
+  </div>
+  
+  <div id="userMap" style="width:100%; height:500px; border-radius:12px; margin-bottom:20px;"></div>
+  
+</section>
+
+<!-- ظظظظظظظظظظظظظظظظظظظظظظظظظ -->
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- JS -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
